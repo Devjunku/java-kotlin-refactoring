@@ -22,27 +22,48 @@ class MemoryMemberRepositoryTest @Autowired constructor(
 
     @Test
     fun save() {
-        val member = Member()
-        member.name = "SpringBoot!!"
+        val member = Member().apply {
+            name = "SpringBoot!!"
+        }
         memoryMemberRepository.save(member)
         val result =  memoryMemberRepository.findByName(member.name!!)
-        Assertions.assertEquals(member, result)
         assertThat(member).isEqualTo(result)
     }
 
     @Test
     fun findByName() {
 
-        val member1 = Member()
-        member1.name = "spring1"
+        val member1 = Member().apply {
+            name = "spring1"
+        }
         memoryMemberRepository.save(member1)
 
-        val member2 = Member()
-        member2.name = "spring2"
+        val member2 = Member().apply {
+            name = "spring2"
+        }
         memoryMemberRepository.save(member2)
 
         assertThat(member1).isEqualTo(memoryMemberRepository.findByName("spring1"))
         assertThat(member2).isEqualTo(memoryMemberRepository.findByName("spring2"))
+    }
+
+    @Test
+    fun findAll() {
+        val member1 = Member().apply {
+            name = "spring"
+        }
+
+        val member2 = Member().apply {
+            name = "spring"
+        }
+        memoryMemberRepository.save(member1)
+        memoryMemberRepository.save(member2)
+
+        val result = memoryMemberRepository.findAll()
+
+        assertThat(result.size).isEqualTo(2)
+
+
     }
 
 }

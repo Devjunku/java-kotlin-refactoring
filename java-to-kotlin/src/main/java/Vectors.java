@@ -5,7 +5,6 @@ public class Vectors {
         Object result = initial;
         for (int i = 0; i < l.size(); i++) {
             result = PO.apply(result, l.get(i));
-
         }
         return result;
     }
