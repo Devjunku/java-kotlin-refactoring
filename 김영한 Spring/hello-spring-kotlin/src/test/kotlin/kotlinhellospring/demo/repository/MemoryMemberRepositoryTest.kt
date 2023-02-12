@@ -2,6 +2,7 @@ package kotlinhellospring.demo.repository
 
 import kotlinhellospring.demo.domain.Member
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,11 +21,12 @@ class MemoryMemberRepositoryTest @Autowired constructor(
 //        Assertions.assertEquals(member, result)
 //    }
 
+    @AfterEach
+    fun afterEach() = memoryMemberRepository.clearStore()
+
     @Test
     fun save() {
-        val member = Member().apply {
-            name = "SpringBoot!!"
-        }
+        val member = Member(name = "SpringBoot!!")
         memoryMemberRepository.save(member)
         val result =  memoryMemberRepository.findByName(member.name!!)
         assertThat(member).isEqualTo(result)
@@ -33,14 +35,10 @@ class MemoryMemberRepositoryTest @Autowired constructor(
     @Test
     fun findByName() {
 
-        val member1 = Member().apply {
-            name = "spring1"
-        }
+        val member1 = Member(name = "spring1")
         memoryMemberRepository.save(member1)
 
-        val member2 = Member().apply {
-            name = "spring2"
-        }
+        val member2 = Member(name = "spring2")
         memoryMemberRepository.save(member2)
 
         assertThat(member1).isEqualTo(memoryMemberRepository.findByName("spring1"))
@@ -49,13 +47,9 @@ class MemoryMemberRepositoryTest @Autowired constructor(
 
     @Test
     fun findAll() {
-        val member1 = Member().apply {
-            name = "spring"
-        }
+        val member1 = Member(name = "spring")
+        val member2 = Member(name = "spring")
 
-        val member2 = Member().apply {
-            name = "spring"
-        }
         memoryMemberRepository.save(member1)
         memoryMemberRepository.save(member2)
 
