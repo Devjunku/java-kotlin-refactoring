@@ -11,7 +11,7 @@ import kotlin.collections.HashMap
  * Component 또는 Repository Annotation을 사용하여 등록하면 된다.
  * 테스트 코드가.. 안ㄷ...
  */
-@Repository
+//@Repository
 class MemoryMemberRepository : MemberRepository {
 
     companion object {

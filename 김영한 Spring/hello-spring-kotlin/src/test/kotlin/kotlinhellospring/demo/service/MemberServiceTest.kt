@@ -24,8 +24,6 @@ internal class MemberServiceTest @Autowired constructor(
     @AfterEach
     fun afterEach() {
         memoryMemberRepository.clearStore()
-        println(memoryMemberRepository.toString())
-        println(memberService.memoryMemberRepository.toString())
     }
 
     @Test fun `회원가입`() {

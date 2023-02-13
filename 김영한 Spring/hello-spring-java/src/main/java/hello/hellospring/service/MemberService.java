@@ -2,10 +2,13 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+//@Service
 public class MemberService {
 
     /**
@@ -13,7 +16,9 @@ public class MemberService {
      */
     private final MemoryMemberRepository memoryMemberRepository ;
 
+
     // 내부에서 선언하지 않고 외부에서 주입하는 방식 DI Dependency Injection
+//    @Autowired
     public MemberService(MemoryMemberRepository memoryMemberRepository) {
         this.memoryMemberRepository = memoryMemberRepository;
     }
