@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class SpringConfig {
 
-    @Bean
-    fun memberService(): MemberService = MemberService(memoryMemberRepository())
-
-    @Bean
-    fun memoryMemberRepository(): MemoryMemberRepository = MemoryMemberRepository()
+//    @Bean
+//    fun memberService(): MemberService = MemberService(memoryMemberRepository())
+//
+//    @Bean
+//    fun memoryMemberRepository(): MemoryMemberRepository = MemoryMemberRepository()
 
 }
