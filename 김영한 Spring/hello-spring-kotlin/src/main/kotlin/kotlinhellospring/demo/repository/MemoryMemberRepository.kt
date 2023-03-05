@@ -39,11 +39,7 @@ class MemoryMemberRepository : MemberRepository {
         return store[id]
     }
 
-    override fun findByName(name: String?): Member? = store
-        .values
-        .find { member ->
-            member.name == name
-        }
+    override fun findByName(name: String?): Member? = store.values.find { member -> member.name == name }
 
     override fun findAll(): List<Member> {
         return ArrayList(store.values)
