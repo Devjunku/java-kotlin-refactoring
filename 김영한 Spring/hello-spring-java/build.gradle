@@ -21,6 +21,10 @@ dependencies {
 	// Database: jdbc & H2Database
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	// java는 DB와 붙으려면 jdbc driver가 꼭 있어야 한다. 명심!
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
 	runtimeOnly 'com.h2database:h2'
 }
 

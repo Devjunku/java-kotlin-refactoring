@@ -1,20 +1,30 @@
 package hello.hellospring;
 
 
+import hello.hellospring.repository.JdbcMemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import hello.hellospring.service.JdbcMemberService;
 import hello.hellospring.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sql.DataSource;
+
 /**
  * 직접 Spring Bean에 등록하는 방법
+ *
  * @Configuration
- * @Bean
- * 사용
+ * @Bean 사용
  */
 
 @Configuration
+@RequiredArgsConstructor
 public class SpringConfig {
+
+    private final DataSource dataSource;
+//
 
     /*
     일반적으로 우리가 작성하는 Controller, Service, Repository는 ComponentScan을 사용한다.
@@ -25,13 +35,25 @@ public class SpringConfig {
     그게 바로 이 방법이다.
      */
 
+    //    @Bean
+//    public MemberService memberService() {
+//        return new MemberService(memoryMemberRepository());
+//    }
+//
+//    @Bean
+//    public JdbcMemberService jdbcMemberService() {
+//        return new JdbcMemberService(jdbcMemberRepository());
+//    }
+//
+//    @Bean
+//    public MemoryMemberRepository memoryMemberRepository() {
+//        return new MemoryMemberRepository();
+//    }
+//
     @Bean
-    public MemberService memberService() {
-        return new MemberService(memoryMemberRepository());
+    public JdbcMemberRepository jdbcMemberRepository() {
+        return new JdbcMemberRepository(dataSource);
     }
 
-    @Bean
-    public MemoryMemberRepository memoryMemberRepository() {
-        return new MemoryMemberRepository();
-    }
+
 }

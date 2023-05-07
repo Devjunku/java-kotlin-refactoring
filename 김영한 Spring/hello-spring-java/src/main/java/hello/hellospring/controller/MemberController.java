@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 
-@Controller
+//@Controller
 public class MemberController {
 
     private final MemberService memberService;

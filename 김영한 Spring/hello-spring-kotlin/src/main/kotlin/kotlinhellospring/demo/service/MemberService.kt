@@ -1,23 +1,22 @@
 package kotlinhellospring.demo.service
 
 import kotlinhellospring.demo.domain.Member
-import kotlinhellospring.demo.repository.MemoryMemberRepository
-import org.springframework.beans.factory.annotation.Autowired
+import kotlinhellospring.demo.repository.JdbcMemberRepository
 import org.springframework.stereotype.Service
 
-@Service
+// @Service
 class MemberService(
-    val memoryMemberRepository: MemoryMemberRepository,
+    val jdbcMemberRepository: JdbcMemberRepository,
 ) {
 
     fun join(member: Member): Long? {
         validateDuplicateMember(member)
-        memoryMemberRepository.save(member)
+        jdbcMemberRepository.save(member)
         return member.id
     }
 
     private fun validateDuplicateMember(member: Member) {
-        memoryMemberRepository.findByName(member.name)?.let {
+        jdbcMemberRepository.findByName(member.name)?.let {
             throw IllegalStateException("이미 존재하는 회원입니다.")
         }
     }
@@ -26,12 +25,12 @@ class MemberService(
     /**
      * 전체 회원 조회
      */
-    fun findMembers(): List<Member> = memoryMemberRepository.findAll()
+    fun findMembers(): List<Member> = jdbcMemberRepository.findAll()
 
     /**
      * 특정 회원 조회
      */
-    fun findOne(id: Long): Member? = memoryMemberRepository.findById(id)
+    fun findOne(id: Long): Member? = jdbcMemberRepository.findById(id)
 
 
 }

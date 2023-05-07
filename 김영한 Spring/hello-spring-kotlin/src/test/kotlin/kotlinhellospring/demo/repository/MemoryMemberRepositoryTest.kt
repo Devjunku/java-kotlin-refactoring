@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 class MemoryMemberRepositoryTest @Autowired constructor(
-    private val memoryMemberRepository: MemoryMemberRepository
+    private val jdbcMemberRepository: JdbcMemberRepository
 ) {
 
 //    @Test
@@ -21,14 +21,14 @@ class MemoryMemberRepositoryTest @Autowired constructor(
 //        Assertions.assertEquals(member, result)
 //    }
 
-    @AfterEach
-    fun afterEach() = memoryMemberRepository.clearStore()
+//    @AfterEach
+//    fun afterEach() = jdbcMemberRepository.clear()
 
     @Test
     fun save() {
         val member = Member(name = "SpringBoot!!")
-        memoryMemberRepository.save(member)
-        val result =  memoryMemberRepository.findByName(member.name!!)
+        jdbcMemberRepository.save(member)
+        val result =  jdbcMemberRepository.findByName(member.name!!)
         assertThat(member).isEqualTo(result)
     }
 
@@ -36,24 +36,24 @@ class MemoryMemberRepositoryTest @Autowired constructor(
     fun findByName() {
 
         val member1 = Member(name = "spring1")
-        memoryMemberRepository.save(member1)
+        jdbcMemberRepository.save(member1)
 
         val member2 = Member(name = "spring2")
-        memoryMemberRepository.save(member2)
+        jdbcMemberRepository.save(member2)
 
-        assertThat(member1).isEqualTo(memoryMemberRepository.findByName("spring1"))
-        assertThat(member2).isEqualTo(memoryMemberRepository.findByName("spring2"))
+        assertThat(member1).isEqualTo(jdbcMemberRepository.findByName("spring1"))
+        assertThat(member2).isEqualTo(jdbcMemberRepository.findByName("spring2"))
     }
 
     @Test
     fun findAll() {
-        val member1 = Member(name = "spring")
-        val member2 = Member(name = "spring")
+        val member1 = Member(name = "spring3")
+        val member2 = Member(name = "spring4")
 
-        memoryMemberRepository.save(member1)
-        memoryMemberRepository.save(member2)
+        jdbcMemberRepository.save(member1)
+        jdbcMemberRepository.save(member2)
 
-        val result = memoryMemberRepository.findAll()
+        val result = jdbcMemberRepository.findAll()
 
         assertThat(result.size).isEqualTo(2)
 

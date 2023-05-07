@@ -1,10 +1,10 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -12,8 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    private final MemoryMemberRepository memoryMemberRepository = new MemoryMemberRepository();
-    private final MemberService memberService = new MemberService(memoryMemberRepository);
+    private final MemberRepository memoryMemberRepository = new MemoryMemberRepository();
+    private final MemberService memberService;
+
+    MemberServiceTest(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     /**
      * TEST가 동작하기 전에 만들어준다.
@@ -26,7 +30,7 @@ class MemberServiceTest {
 
     @AfterEach
     void afterEach() {
-        memoryMemberRepository.clearStore();
+//        memoryMemberRepository.clearStore();
     }
 
     /**
