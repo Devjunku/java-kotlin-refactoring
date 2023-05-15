@@ -18,13 +18,13 @@ fun main() {
     val member = Member(
         memberId,
         "memberA",
-        Grade.BASIC
+        Grade.VIP
 
     )
 
 
     memberService.join(member)
-    val order = orderService.createOrder(memberId, "itemA", 9999)
+    val order = orderService.createOrder(memberId, "itemA", 20000)
 
     println("order = " + order.toString())
     println("discountedPrice = " + order.calculatePrice().toString())

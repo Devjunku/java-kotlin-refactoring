@@ -4,8 +4,6 @@ import hello.corekotlin.AppConfig
 import hello.corekotlin.member.data.Grade
 import hello.corekotlin.member.data.Member
 import hello.corekotlin.member.service.MemberService
-import hello.corekotlin.member.service.MemberServiceImpl
-import hello.corekotlin.order.implement.OrderServiceImpl
 import hello.corekotlin.order.service.OrderService
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
