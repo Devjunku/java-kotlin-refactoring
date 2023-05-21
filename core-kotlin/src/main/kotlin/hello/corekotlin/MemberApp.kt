@@ -2,11 +2,17 @@ package hello.corekotlin
 
 import hello.corekotlin.member.data.Grade
 import hello.corekotlin.member.data.Member
+import hello.corekotlin.member.service.MemberService
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 fun main() {
 
-    val appConfig = AppConfig();
-    val memberService = appConfig.memberService()
+//    val appConfig = AppConfig();
+//    val memberService = appConfig.memberService()
+
+    val applicationContext = AnnotationConfigApplicationContext(AppConfig::class.java)
+    val memberService = applicationContext.getBean("memberService", MemberService::class.java)
+
 
     val member = Member(
         id = 1L,
