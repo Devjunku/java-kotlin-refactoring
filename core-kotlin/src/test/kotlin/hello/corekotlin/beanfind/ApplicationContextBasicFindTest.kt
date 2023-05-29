@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.assertThrows
+import org.springframework.beans.factory.NoSuchBeanDefinitionException
 
 private class ApplicationContextBasicFindTest {
 
@@ -49,7 +50,9 @@ private class ApplicationContextBasicFindTest {
     @Test
     fun `이름으로 검색 X`() {
         // ac.getBean("xxxx", MemberServiceImpl::class.java)
-        assertThrows()
+        assertThrows(NoSuchBeanDefinitionException::class.java) {
+            ac.getBean("xxxx", MemberService::class.java)
+        }
 
     }
 
