@@ -48,7 +48,7 @@ private class ApplicationContextBasicFindTest {
     }
 
     @Test
-    fun `이름으로 검색 X`() {
+    fun `빈 이름으로 검색 X`() {
         // ac.getBean("xxxx", MemberServiceImpl::class.java)
         assertThrows(NoSuchBeanDefinitionException::class.java) {
             ac.getBean("xxxx", MemberService::class.java)
