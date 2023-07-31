@@ -39,6 +39,13 @@ public class ApplicationContextExtendsFindTest {
     }
 
     @Test
+    @DisplayName("특정 하위 타입으로 조회")
+    void findBeanBySUbType() {
+        RateDiscountPolicy bean = ac.getBean(RateDiscountPolicy.class);
+        assertThat(bean).isInstanceOf(RateDiscountPolicy.class);
+    }
+
+    @Test
     @DisplayName("부모 타입으로 전부 다 조회하기")
     void findAllBeanByParentType() {
         Map<String, DiscountPolicy> beansOfType = ac.getBeansOfType(DiscountPolicy.class);
@@ -57,7 +64,7 @@ public class ApplicationContextExtendsFindTest {
         }
     }
 
-    
+
 
 
     @Configuration

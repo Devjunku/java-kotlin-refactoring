@@ -32,6 +32,12 @@ private class ApplicationContextExtendsFindTest {
         assertThat(discountPolicy).isInstanceOf(DiscountPolicy::class.java)
     }
 
+    @Test
+    fun `특정 하위 타입으로 조회`() {
+        ac.getBean(RateDiscountPolicy::class.java).let {
+            assertThat(it).isInstanceOf(RateDiscountPolicy::class.java)
+        }
+    }
 
     @Test
     fun `부모 타입으로 전부 다 조회`() {

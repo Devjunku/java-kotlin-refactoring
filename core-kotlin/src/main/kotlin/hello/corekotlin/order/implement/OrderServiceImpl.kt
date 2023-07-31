@@ -21,4 +21,9 @@ class OrderServiceImpl(
             discountPrice
         )
     }
+
+    fun getMemberRepository(): MemberRepository  {
+        return memberRepository
+    }
+
 }

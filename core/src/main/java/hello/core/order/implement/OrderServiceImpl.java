@@ -1,6 +1,7 @@
 package hello.core.order.implement;
 
 import hello.core.discount.DiscountPolicy;
+import hello.core.discount.implement.FixDiscountPolicy;
 import hello.core.member.data.Member;
 import hello.core.member.repository.MemberRepository;
 import hello.core.order.data.Order;
@@ -24,4 +25,10 @@ public class OrderServiceImpl implements OrderService {
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    // 테스트용
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
+
 }

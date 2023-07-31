@@ -15,16 +15,16 @@ import org.springframework.context.annotation.Configuration
 class AppConfig {
 
     @Bean
-    fun memberService(): MemberService = MemberServiceImpl(memberRepositoy())
+    fun memberService(): MemberService = MemberServiceImpl(memberRepository())
 
     @Bean
     fun orderService(): OrderService = OrderServiceImpl(
-        memberRepositoy(),
+        memberRepository(),
         discountPolicy()
     )
 
     @Bean
-    fun memberRepositoy(): MemberRepository = MemoryMemberImpl()
+    fun memberRepository(): MemberRepository = MemoryMemberImpl()
 
     @Bean
     fun discountPolicy(): DiscountPolicy = RateDiscountPolicy()
