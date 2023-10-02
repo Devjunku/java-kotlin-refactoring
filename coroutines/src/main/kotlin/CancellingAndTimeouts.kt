@@ -1,7 +1,7 @@
 import kotlinx.coroutines.*
 
 
-fun main() = runBlocking {
+//fun main() = runBlocking {
 
     /**
      * Cancelling coroutine execution
@@ -105,15 +105,15 @@ fun main() = runBlocking {
 //        }
 //    }
 
-    val result = withTimeoutOrNull(1300L) {
-        repeat(1000) { i ->
-            println("I'm sleeping $i")
-            delay(500L)
-        }
-        "Done"
-    }
-    println("result is [${result}]")
-}
+//    val result = withTimeoutOrNull(1300L) {
+//        repeat(1000) { i ->
+//            println("I'm sleeping $i")
+//            delay(500L)
+//        }
+//        "Done"
+//    }
+//    println("result is [${result}]")
+//}
 
 //fun <T>println(msg: T) {
 //    kotlin.io.println("msg: $msg, [${Thread.currentThread().name}]")

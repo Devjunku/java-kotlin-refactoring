@@ -18,7 +18,7 @@ import kotlinx.coroutines.*
  */
 
 
-fun main(args: Array<String>) = runBlocking {
+//fun main(args: Array<String>) = runBlocking {
 
 //   GlobalScope.launch {
 //      delay(1000L)
@@ -95,7 +95,7 @@ fun main(args: Array<String>) = runBlocking {
 //      }
 //   }
 //   println("Croroutine Outer")
-}
+//}
 
 /**
  * println을 최상위 함수로 override

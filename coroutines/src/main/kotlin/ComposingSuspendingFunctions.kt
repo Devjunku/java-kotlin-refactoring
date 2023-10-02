@@ -109,70 +109,70 @@ import kotlin.system.measureTimeMillis
 //    }
 //}
 
-fun main() = runBlocking<Unit> {
+//fun main() = runBlocking<Unit> {
     /**
      * Cancellation propagated coroutines hierarchy
      * - note how both the first async and the awaiting parent are cancelled on failure of one of the children (namely, two)
      */
-    try {
-        failedConcurrentSum()
-    } catch (e: Exception) {
-        println("Computation failed with ArithmeticException")
-    }
-}
+//    try {
+//        failedConcurrentSum()
+//    } catch (e: Exception) {
+//        println("Computation failed with ArithmeticException")
+//    }
+//}
 
-suspend fun failedConcurrentSum(): Int = coroutineScope {
-    val one = async<Int> { 
-        try {
-            delay(Long.MAX_VALUE)
-            42
-        } finally {
-            println("first child was cancelled")
-        }
-    }
-
-    val two = async<Int> {
-        println("second child throws an exception")
-        throw ArithmeticException()
-    }
-    one.await() + two.await()
-}
-
-
-suspend fun concurrentSum(): Int = coroutineScope {
-    val one = async { doSomethingUseFulOne() }
-    val two = async { doSomethingUseFulTwo() }
-    one.await() + two.await()
-}
+//suspend fun failedConcurrentSum(): Int = coroutineScope {
+//    val one = async<Int> {
+//        try {
+//            delay(Long.MAX_VALUE)
+//            42
+//        } finally {
+//            println("first child was cancelled")
+//        }
+//    }
+//
+//    val two = async<Int> {
+//        println("second child throws an exception")
+//        throw ArithmeticException()
+//    }
+//    one.await() + two.await()
+//}
 
 
-suspend fun doSomethingUseFulOne(): Int {
-    println("start, doSomethingUseFulOne")
-    delay(3000L) // pretend wa are doing something useful here
-    println("end, doSomethingUseFulOne")
-    return 13
-}
+//suspend fun concurrentSum(): Int = coroutineScope {
+//    val one = async { doSomethingUseFulOne() }
+//    val two = async { doSomethingUseFulTwo() }
+//    one.await() + two.await()
+//}
+//
+//
+//suspend fun doSomethingUseFulOne(): Int {
+//    println("start, doSomethingUseFulOne")
+//    delay(3000L) // pretend wa are doing something useful here
+//    println("end, doSomethingUseFulOne")
+//    return 13
+//}
+//
+//suspend fun doSomethingUseFulTwo(): Int {
+//    println("start, doSomethingUseFulTwo")
+//    delay(3000L) // pretend wa are doing something useful here, too
+//    println("end, doSomethingUseFulTwo")
+//    return 29
+//}
 
-suspend fun doSomethingUseFulTwo(): Int {
-    println("start, doSomethingUseFulTwo")
-    delay(3000L) // pretend wa are doing something useful here, too
-    println("end, doSomethingUseFulTwo")
-    return 29
-}
+//fun <T>println(msg: T) {
+//    kotlin.io.println("$msg, [${Thread.currentThread().name}]")
+//}
 
-fun <T>println(msg: T) {
-    kotlin.io.println("$msg, [${Thread.currentThread().name}]")
-}
-
-fun somethingUsefulOneAsync() = GlobalScope.async {
-    println("start, somethingUsefulOneAsync")
-    val res = doSomethingUseFulOne()
-    println("end, somethingUsefulOneAsync")
-    res
-}
-fun somethingUsefulTwoAsync() = GlobalScope.async {
-    println("start, somethingUsefulTwoAsync")
-    val res = doSomethingUseFulTwo()
-    println("end, somethingUsefulTwoAsync")
-    res
-}
+//fun somethingUsefulOneAsync() = GlobalScope.async {
+//    println("start, somethingUsefulOneAsync")
+//    val res = doSomethingUseFulOne()
+//    println("end, somethingUsefulOneAsync")
+//    res
+//}
+//fun somethingUsefulTwoAsync() = GlobalScope.async {
+//    println("start, somethingUsefulTwoAsync")
+//    val res = doSomethingUseFulTwo()
+//    println("end, somethingUsefulTwoAsync")
+//    res
+//}
